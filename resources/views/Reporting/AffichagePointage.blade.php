@@ -63,7 +63,7 @@
                                         <!-- Formulaire pour le bouton Supprimer -->
                                         <form action="{{ route('Reporting.affichagePointage.destroy', $pointage->idPointage) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cet enregistrement ?');">
                                             @csrf
-                                            @method('DELETE')
+                                            
                                             <button type="submit" class="btn btn-danger">Supprimer</button>
                                         </form>
                                     </div>
@@ -73,6 +73,8 @@
 
                     </tbody>
                 </table>
+
+
         
     </div>
     </form>

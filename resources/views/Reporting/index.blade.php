@@ -5,6 +5,11 @@
         </h2>
     </x-slot>
 
+    <br>
+    <br>
+    <br>
+    <br>
+
     <!-- Contenu principal de la page -->
     <div class="container text-center">
         <div class="row">

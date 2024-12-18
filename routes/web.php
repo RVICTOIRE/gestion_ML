@@ -32,6 +32,11 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/menu', function () {
+    return view('menu');
+});
+
+
 // Authentification Laravel
 //Route::get('/Login', [AuthController::class, 'Login']) ->name('auth.Login');
 //Route::delete('/Logout', [AuthController::class, 'Logout'])->name('auth.Logout');
@@ -59,7 +64,7 @@ Route::prefix('/Reporting')->name('Reporting.')->controller(ReportController::cl
     Route::get('/affichagePointage', 'showPointage')->name('affichagePointage');
     // Routes avec model binding pour les actions d'édition et de suppression
     Route::get('/affichagePointage/{pointage}/edit', 'editPointage')->name('affichagePointage.edit');
-    Route::delete('/affichagePointage/{pointage}', 'destroyPointage')->name('affichagePointage.destroy');
+    Route::post('/affichagePointage/{pointage}', 'destroyPointage')->name('affichagePointage.destroy');
     Route::put('/affichagePointage/{pointage}', 'updatePointage')->name('affichagePointage.update');
 
 });

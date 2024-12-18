@@ -61,7 +61,7 @@ class ReportController extends Controller
         public function updatePointage(Request $request, PointageML $pointage)
         {
 
-            dd($request->all());
+            //dd($request->all());
             // Validation des données
             $validatedData = $request->validate([
                 'Date' => 'required|date',
@@ -72,7 +72,7 @@ class ReportController extends Controller
             ]);
             
             // Forcer Fonctionnel à 0 si la case est décochée
-            $validatedData['Fonctionnel'] = $request->has('Fonctionnel') ? 1 : 0;
+            $validatedData['Fonctionnel'] = $request->Fonctionnel ? 1 : 0;
 
             // Réinitialiser Rotation si non fonctionnel
                 if (!$validatedData['Fonctionnel']) {
@@ -81,10 +81,8 @@ class ReportController extends Controller
                 
                 
             // Mise à jour des données
-            $pointage->update($validatedData);
-
-            
-
+            $result=$pointage->update($validatedData);
+            //dd($result);
             return redirect()->route('Reporting.affichagePointage')->with('success', 'Pointage mis à jour avec succès');
         }
 
@@ -92,6 +90,7 @@ class ReportController extends Controller
         // Supprimer un pointage avec model binding
         public function destroyPointage(PointageML $pointage)
         {
+            
             $pointage->delete();
     
             return redirect()->route('Reporting.affichagePointage')->with('success', 'Pointage supprimé avec succès');

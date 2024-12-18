@@ -31,20 +31,20 @@
                                     <label for="">Région</label>   
                                     <select name="region" id=""  class="form-control">
                                         <option value=""></option>
-                                        <option value="">Dakar</option>
-                                        <option value="">Thies</option>
-                                        <option value="">Louga</option>
-                                        <option value="">Kaolack</option>
-                                        <option value="">Kaffrine</option>
-                                        <option value="">Fatick</option>
-                                        <option value="">Saint-Louis</option>
-                                        <option value="">Matam</option>
-                                        <option value="">Kédougou</option>
-                                        <option value="">Matam</option>
-                                        <option value="">Sédhiou</option>
-                                        <option value="">Kolda</option>
-                                        <option value="">Diourbel</option>
-                                        <option value="">Ziguinchor</option>
+                                        <option value="Dakar">Dakar</option>
+                                        <option value="Thies">Thies</option>
+                                        <option value="Louga">Louga</option>
+                                        <option value="Kaolack">Kaolack</option>
+                                        <option value="Kaffrine">Kaffrine</option>
+                                        <option value="Fatick">Fatick</option>
+                                        <option value="Saint-Louis">Saint-Louis</option>
+                                        <option value="Matam">Matam</option>
+                                        <option value="Kédougou">Kédougou</option>
+                                        <option value="Matam">Matam</option>
+                                        <option value="Sédhiou">Sédhiou</option>
+                                        <option value="Kolda<">Kolda</option>
+                                        <option value="Diourbel">Diourbel</option>
+                                        <option value="Ziguinchor">Ziguinchor</option>
                                     </select>
                                 
                                 </div>
