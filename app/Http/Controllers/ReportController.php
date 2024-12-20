@@ -81,7 +81,7 @@ class ReportController extends Controller
                 
                 
             // Mise à jour des données
-            $result=$pointage->update($validatedData);
+            $pointage->update($validatedData);
             //dd($result);
             return redirect()->route('Reporting.affichagePointage')->with('success', 'Pointage mis à jour avec succès');
         }

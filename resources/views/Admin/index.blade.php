@@ -20,7 +20,7 @@
                 <a href="Admin/enregCommune" class="btn btn-success btn-block">Enregistrement des communes</a>
             </div>
             <div class="col align-self-end">
-                <a href="Admin/enregML" class="btn btn-success btn-block">Enregistrement du matériel lourd</a>
+                <a href="Admin/affichageConcess" class="btn btn-success btn-block">Liste des concessionaires</a>
             </div>
         </div>
     </div>

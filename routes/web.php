@@ -52,7 +52,10 @@ Route::prefix('/Admin')->name('Admin.')->controller(AdminController::class)->gro
     Route::post('/enregConcess', 'storeConcessForm')->name('storeConcessForm');  
     Route::get('/enregCommune', 'showCommuneForm')->name('showCommuneForm');
     Route::post('/enregCommune', 'storeCommuneForm')->name('storeCommuneForm');    
-
+    Route::get('/affichageConcess', 'showConcess')->name('affichageConcess');
+    Route::delete('/affichageConcess/{concessionnaire}', 'destroyconcess')->name('affichageConcess.destroy');
+    Route::put('/affichageConcess/{concessionaire}', 'updateConcess')->name('affichageConcess.update');
+    Route::get('/affichageConcess/{concessionaire}/edit', 'editConcess')->name('affichageConcess.edit');
 
 });
 
@@ -64,7 +67,7 @@ Route::prefix('/Reporting')->name('Reporting.')->controller(ReportController::cl
     Route::get('/affichagePointage', 'showPointage')->name('affichagePointage');
     // Routes avec model binding pour les actions d'édition et de suppression
     Route::get('/affichagePointage/{pointage}/edit', 'editPointage')->name('affichagePointage.edit');
-    Route::post('/affichagePointage/{pointage}', 'destroyPointage')->name('affichagePointage.destroy');
+    Route::delete('/affichagePointage/{pointage}', 'destroyPointage')->name('affichagePointage.destroy');
     Route::put('/affichagePointage/{pointage}', 'updatePointage')->name('affichagePointage.update');
 
 });

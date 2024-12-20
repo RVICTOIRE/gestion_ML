@@ -81,4 +81,48 @@ public function storeCommuneForm (Request $request) {
         return redirect()->route('Admin.showConcessForm')->with('success', 'Concessionaires enregistré avec succès');
     } 
 
+    // Affichage concessionnaires
+    public function showConcess()
+{
+    $concessionaires = concess::all();
+    return view('Admin.affichageConcess', compact('concessionaires'));
+}
+
+
+// Mettre à jour le concessionaire avec model binding
+public function updateConcess(Request $request, Concess $concessionaire)
+{
+    // Validation des données'Nombre_de_véhicules' => 'required|integer', 'Etat' => 'required|string',
+       
+    $validatedData = $request->validate([
+        'nomConcess' => 'required|string|max:255',
+        
+    ]);
+
+    // Mise à jour des données
+    $concessionaire->update($validatedData);
+
+    // Redirection avec un message de succès
+    return redirect()->route('Admin.affichageConcess')->with('success', 'Concessionnaire mis à jour avec succès');
+}
+
+
+public function editConcess(Concess $concessionaire)
+{
+    // Passez les données directement à la vue
+    return view('Admin.editConcess', compact('concessionaire'));
+}
+
+
+// Supprimer un pointage avec model binding
+public function destroyConcess(Concess $concessionaire)
+{
+    
+    $concessionaire->delete();
+
+    return redirect()->route('Admin.affichageConcess')->with('success', 'Concessionaire supprimé avec succès');
+}
+
+
+
 };
