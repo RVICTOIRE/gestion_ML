@@ -39,14 +39,16 @@ class ReportController extends Controller
 
 
     // Affichage pointage
-    public function showPointage()
+public function showPointage()
 {
-    // Récupérer tous les pointages
-    $pointages = PointageML::with(['materielLourd.concessionnaire', 'communeOuAxe'])->get();
+    // Récupérer tous les pointages avec pagination
+    $pointages = PointageML::with(['materielLourd.concessionnaire', 'communeOuAxe'])
+                            ->paginate(10);
 
-    // Retourner la vue avec les données
-    return view('Reporting.affichagePointage',compact('pointages') );
+    // Retourner la vue avec les données paginées
+    return view('Reporting.affichagePointage', compact('pointages'));
 }
+
  
         // Afficher le formulaire d'édition avec model binding
         public function editPointage(PointageML $pointage)

@@ -34,7 +34,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="">Type de matériel lourd</label>
+                                    <label for="">Type de véhicule</label>
                                     <input type="text" name="typeml" id="" class="form-control">
                                 </div>
 

@@ -1,9 +1,18 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
-            {{ __('Liste des pointages effectués') }}
-        </h2>
+        <div class="d-flex justify-content-between align-items-center">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center" >
+                {{ __('Liste des pointages effectués') }}
+            </h2>
+            <a href="{{ route('Reporting.index') }}" class="btn btn-outline-primary btn-sm">Accueil</a>
+        </div>
     </x-slot>
+
+    @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <div class="container mt-4">
         <!-- Formulaire de recherche -->
@@ -69,5 +78,10 @@
                 </tbody>
             </table>
         </form>
+
+        <!-- Pagination -->
+        <div class="mt-4">
+            {{ $pointages->links() }}
+        </div>
     </div>
 </x-app-layout>

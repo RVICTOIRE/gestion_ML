@@ -53,10 +53,20 @@ Route::prefix('/Admin')->name('Admin.')->controller(AdminController::class)->gro
     Route::get('/enregCommune', 'showCommuneForm')->name('showCommuneForm');
     Route::post('/enregCommune', 'storeCommuneForm')->name('storeCommuneForm');    
     Route::get('/affichageConcess', 'showConcess')->name('affichageConcess');
+    // Routes avec model binding pour les actions d'édition et de suppression (concessionaire)
     Route::delete('/affichageConcess/{concessionnaire}', 'destroyconcess')->name('affichageConcess.destroy');
     Route::put('/affichageConcess/{concessionaire}', 'updateConcess')->name('affichageConcess.update');
     Route::get('/affichageConcess/{concessionaire}/edit', 'editConcess')->name('affichageConcess.edit');
-
+    // Routes avec model binding pour les actions d'édition et de suppression(commune)
+    Route::get('/affichagecommune', 'showcommune')->name('affichagecommune');
+    Route::delete('/affichagecommune/{communeouaxe}', 'destroycommune')->name('affichagecommune.destroy');
+    Route::put('/affichagecommune/{communeouaxe}', 'updatecommune')->name('affichagecommune.update');
+    Route::get('/affichagecommune/{communeouaxe}/edit', 'editcommune')->name('affichagecommune.edit');
+    // Routes avec model binding pour les actions d'édition et de suppression(materiel_lourd)
+    Route::get('/affichageML', 'showML')->name('affichageML');
+    Route::delete('/affichageML/{materiel_lourd}', 'destroyML')->name('affichageML.destroy');
+    Route::put('/affichageML/{materiel_lourd}', 'updateML')->name('affichageML.update');
+    Route::get('/affichageML/{materiel_lourd}/edit', 'editML')->name('affichageML.edit');  
 });
 
 // MENU REPORTING

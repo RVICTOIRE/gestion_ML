@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Materiel_lourd extends Model
 {
@@ -15,7 +16,6 @@ class Materiel_lourd extends Model
 }
 
 
-  
     
     protected $primaryKey = 'idML';
     // Spécifier le nom de la table si différent de la convention par défaut

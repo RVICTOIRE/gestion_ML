@@ -18,8 +18,7 @@ class AdminController extends Controller
 
         return view('Admin.index'); // ou n'importe quelle vue 
     }
-
-            
+        
 
 // Enregistrement ML 
     public function showMLForm() {
@@ -51,7 +50,7 @@ public function storeCommuneForm (Request $request) {
         
     ]);
     CommuneOuAxe::create($validatedData);
-    return redirect()->route('Admin.showCommuneForm')->with('success', 'Commune enregistré avec succès');
+    return redirect()->route('Admin.showCommuneForm')->with('success', 'Commune enregistrée avec succès');
     
     
 } 
@@ -84,7 +83,7 @@ public function storeCommuneForm (Request $request) {
     // Affichage concessionnaires
     public function showConcess()
 {
-    $concessionaires = concess::all();
+    $concessionaires = concess::paginate(5);
     return view('Admin.affichageConcess', compact('concessionaires'));
 }
 
@@ -114,7 +113,7 @@ public function editConcess(Concess $concessionaire)
 }
 
 
-// Supprimer un pointage avec model binding
+// Supprimer un concessionaire avec model binding
 public function destroyConcess(Concess $concessionaire)
 {
     
@@ -123,6 +122,81 @@ public function destroyConcess(Concess $concessionaire)
     return redirect()->route('Admin.affichageConcess')->with('success', 'Concessionaire supprimé avec succès');
 }
 
+  // Affichage commune
+  public function showcommune()
+  {
+    $communeouaxes = CommuneOuAxe::paginate(5);
+      return view('Admin.affichagecommune', compact('communeouaxes'));
+  }
+  
+  // Mettre à jour commune avec model binding
+  public function updatecommune(Request $request, CommuneOuAxe $communeouaxe)
+  {
+        $validatedData = $request->validate([
+        'region' => 'required|string|max:255',
+        'departement' => 'required|string|max:255',
+        'nom_commune' => 'required|string|max:255',
+          
+      ]);
+  
+      // Mise à jour des données
+      $communeouaxe->update($validatedData);
+  
+      // Redirection avec un message de succès
+      return redirect()->route('Admin.affichagecommune')->with('success', 'Commune mise à jour avec succès');
+  }
+  
+  public function editcommune(communeOuAxe $communeouaxe)
+  {
+      // Passez les données directement à la vue
+      return view('Admin.editcommune', compact('communeouaxe'));
+  }
+  
+  // Supprimer commune avec model binding
+  public function destroycommune(communeOuAxe $communeouaxe)
+  {  
+    $communeouaxe->delete();
+  
+      return redirect()->route('Admin.affichagecommune')->with('success', 'Commune supprimée avec succès');
+  }
 
+  // Affichage Matériel lourd
+  public function showML()
+  {
+    $materiel_lourds = Materiel_lourd::paginate(5);
+      return view('Admin.affichageML', compact('materiel_lourds'));
+  }
+  
+  // Mettre à jour ML avec model binding
+  public function updateML(Request $request, Materiel_lourd $materiel_lourd)
+{
+    $validatedData = $request->validate([
+        'matricule' => 'required|string|max:255',
+        'typeml' => 'required|string|max:255',
+        'capacite' => 'required|integer',
+        'idConcess' => 'required|exists:concessionaires,idConcess',
+    ]);
 
+    // Mise à jour des données
+    $materiel_lourd->update($validatedData);
+
+    return redirect()->route('Admin.affichageML')->with('success', 'Matériel lourd mis à jour avec succès.');
+}
+
+  
+public function editML(Materiel_lourd $materiel_lourd)
+{
+    $concessionaires = Concess::all(); 
+    return view('Admin.editML', compact('materiel_lourd', 'concessionaires'));
+}
+
+  
+  // Supprimer ML avec model binding
+  public function destroyML(Materiel_lourd $materiel_lourd)
+  {
+      
+    $materiel_lourd->delete();
+  
+      return redirect()->route('Admin.affichageML')->with('success', 'ML supprimée avec succès');
+  }
 };
