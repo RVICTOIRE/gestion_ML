@@ -4,7 +4,7 @@
             {{ __('Liste des pointages effectués') }}
             
         </h2>
-        <a href="{{ route('Reporting.index') }}" class="btn btn-outline-primary btn-sm">Accueil</a>
+        <a href="{{ route('Delegue.index') }}" class="btn btn-outline-primary btn-sm">Accueil</a>
     </x-slot>
 
     @if(session('success'))
@@ -15,7 +15,7 @@
 
     <div class="container mt-4">
         <!-- Formulaire de recherche -->
-        <form action="{{ route('Reporting.affichagePointage') }}" method="GET" class="mb-4">
+        <form action="{{ route('Delegue.affichagePointageD') }}" method="GET" class="mb-4">
             <div class="row">
                 <div class="col-md-4">
                     <label for="date_debut" class="form-label">Date de début :</label>
@@ -44,7 +44,7 @@
                         <th scope="col">Localisation</th>
                         <th scope="col">Fonctionnel</th>
                         <th scope="col">Rotation</th>
-                        <th scope="col">Action</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -58,24 +58,7 @@
                             <td>{{ $pointage->Fonctionnel ? 'Oui' : 'Non' }}</td>
                             <td>{{ $pointage->Rotation }}</td>
                             <td>
-                                <div class="d-flex gap-2">
-                                    @if($pointage->trashed())
-                                        <!-- Bouton Restaurer -->
-                                        <form action="{{ route('Reporting.affichagePointage.restore', $pointage->idPointage) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-warning btn-sm">Restaurer</button>
-                                        </form>
-                                    @else
-                                        <!-- Bouton Modifier -->
-                                        <a href="{{ route('Reporting.affichagePointage.edit', $pointage->idPointage) }}" class="btn btn-primary btn-sm">Modifier</a>
-                                        <!-- Formulaire Supprimer -->
-                                        <form action="{{ route('Reporting.affichagePointage.destroy', $pointage->idPointage) }}" method="POST" onsubmit="return confirm('Voulez-vous vraiment supprimer cet enregistrement ?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
-                                        </form>
-                                    @endif
-                                </div>
+                                
                             </td>
                             
                         </tr>

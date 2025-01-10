@@ -2,7 +2,9 @@
     <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight" align="center">
             {{ __('Modifier le concessionaire') }}
+            
         </h2>
+        <a href="{{ route('Admin.index') }}" class="btn btn-outline-primary btn-sm">Accueil</a>
     </x-slot>
 
     <!-- Affichage des erreurs et des messages de succès -->
@@ -40,7 +42,7 @@
            
 
             <button type="submit" class="btn btn-primary">Mettre à jour</button>
-            <a href="{{ route('Admin.affichageConcess') }}" class="btn btn-secondary">Annuler</a>
+            <!--<a href="{{ route('Admin.affichageConcess') }}" class="btn btn-secondary">Annuler</a>-->
         </form>
     </div>
 

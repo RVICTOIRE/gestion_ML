@@ -1,12 +1,11 @@
 
     <x-app-layout>
     <x-slot name="header">
-        <div class="d-flex justify-content-between align-items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center" >
-                {{ __('Liste des concessionnaires de la SONAGED') }}
-            </h2>
-            <a href="{{ route('Admin.index') }}" class="btn btn-outline-primary btn-sm">Accueil</a>
-        </div>
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight text-center">
+            {{ __('Liste des concessionaires de la SONAGED') }}
+            
+        </h2>
+        <a href="{{ route('Admin.index') }}" class="btn btn-outline-primary btn-sm">Accueil</a>
     </x-slot>
 
     @if(session('success'))

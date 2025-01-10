@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DelegueController;
 use App\Http\Controllers\ReportController;
 use Facade\Ignition\Middleware\AddGitInformation;
 use Illuminate\Support\Facades\Route;
@@ -79,5 +80,15 @@ Route::prefix('/Reporting')->name('Reporting.')->controller(ReportController::cl
     Route::get('/affichagePointage/{pointage}/edit', 'editPointage')->name('affichagePointage.edit');
     Route::delete('/affichagePointage/{pointage}', 'destroyPointage')->name('affichagePointage.destroy');
     Route::put('/affichagePointage/{pointage}', 'updatePointage')->name('affichagePointage.update');
+    Route::post('/affichagePointage/{id}/restore', 'restorePointage')->name('affichagePointage.restore');
+    
+});
 
+// MENU DELEGUE
+Route::prefix('/Delegue')->name('Delegue.')->controller(DelegueController::class)->group(function () {
+    Route::get('/', 'index')->name('index'); //
+    Route::get('/affichagePointage', 'showPointage')->name('affichagePointageD');
+    Route::get('/calcultonnage',  'calculTonnage')->name('calcultonnage');
+
+    
 });

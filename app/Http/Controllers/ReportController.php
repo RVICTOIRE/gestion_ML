@@ -7,6 +7,7 @@ use App\Models\Concess;
 use App\Models\Materiel_lourd;
 use App\Models\PointageML;
 use Illuminate\Http\Request;
+use Log;
 
 class ReportController extends Controller
 {
@@ -39,15 +40,32 @@ class ReportController extends Controller
 
 
     // Affichage pointage
-public function showPointage()
-{
-    // Récupérer tous les pointages avec pagination
-    $pointages = PointageML::with(['materielLourd.concessionnaire', 'communeOuAxe'])
-                            ->paginate(10);
+        public function showPointage(Request $request)
+        {
 
-    // Retourner la vue avec les données paginées
-    return view('Reporting.affichagePointage', compact('pointages'));
-}
+              // Récupérer les dates de recherche
+            $date_debut = $request->input('date_debut');
+            $date_fin = $request->input('date_fin');
+
+            // Construire la requête en fonction des dates
+             // Récupérer tous les enregistrements, y compris les supprimés
+            $pointages = PointageML::withTrashed();
+        
+
+            if ($date_debut) {
+                $pointages->where('Date', '>=', $date_debut);
+            }
+
+            if ($date_fin) {
+                $pointages->where('Date', '<=', $date_fin);
+            }
+
+            // Paginer les résultats
+            $pointages = $pointages->paginate(05);
+
+            // Retourner la vue avec les données filtrées
+            return view('Reporting.AffichagePointage', compact('pointages'));
+        }
 
  
         // Afficher le formulaire d'édition avec model binding
@@ -94,8 +112,26 @@ public function showPointage()
         {
             
             $pointage->delete();
+            $pointage = PointageML::withTrashed()->get();
+
     
             return redirect()->route('Reporting.affichagePointage')->with('success', 'Pointage supprimé avec succès');
         }
+
+        public function restorePointage($idPointage)
+{
+    // Récupérer uniquement les enregistrements supprimés
+    $pointage = PointageML::onlyTrashed()->findOrFail($idPointage);
+
+    // Restaurer l'enregistrement
+    $pointage->restore();
+
+    // Rediriger avec un message de succès
+    return redirect()->route('Reporting.affichagePointage')->with('success', 'Pointage restauré avec succès.');
+}
+
+
+
+
     }
     

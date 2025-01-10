@@ -4,9 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PointageML extends Model
 {
+
+    use SoftDeletes;
+
+    // Ajoutez cette propriété  pour indiquer la colonne utilisée :
+    protected $dates = ['deleted_at'];
+
     use HasFactory;
 
     // Déclaration de la relation vers le modèle MaterielLourd

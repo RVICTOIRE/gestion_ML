@@ -2,7 +2,9 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight" align="center">
             {{ __('Enregistrement du pointage') }}
+            
         </h2>
+        <a href="{{ route('Reporting.index') }}" class="btn btn-outline-primary btn-sm">Accueil</a>
     </x-slot>
 
     <!-- Affichage des erreurs et des messages de succès -->
@@ -110,7 +112,7 @@
                     <!-- fin de aral -->
 
                 <button type="submit" name="submit" class="btn btn-success">Enregistrer</button>
-                <a href="/Reporting" class="btn btn-info">Retour</a>
+                <!--<a href="/Reporting" class="btn btn-info">Retour</a>-->
             </form>
         </div>
     </div>

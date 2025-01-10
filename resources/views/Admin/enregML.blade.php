@@ -2,7 +2,9 @@
     <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight" align="center">
             {{ __('Enregistrement du matériel lourd') }}
+
         </h2>
+        <a href="{{ route('Admin.index') }}" class="btn btn-outline-primary btn-sm">Accueil</a>
     </x-slot>
 
         <!-- Affichage des erreurs et des messages de succès -->
@@ -54,7 +56,7 @@
                                 </div>
                                     
                                 <button type="submit" name="submit" class="btn btn-success">Enregistrer</button>
-                                <button  align="right" type="button" class="btn btn-info"><a href="/Admin">Retour</a></button>
+                                <!--<button  align="right" type="button" class="btn btn-info"><a href="/Admin">Retour</a></button>-->
 
 
                             </form>

@@ -1,8 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Modifier le pointage') }}
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight" align="center">
+            {{ __('Modifier le pointage pointage') }}
+            
         </h2>
+        <a href="{{ route('Reporting.index') }}" class="btn btn-outline-primary btn-sm">Accueil</a>
     </x-slot>
 
     <!-- Affichage des erreurs et des messages de succès -->
@@ -125,7 +127,7 @@
                     <!-- fin de aral -->
             
             <button type="submit" class="btn btn-primary">Mettre à jour</button>
-            <a href="{{ route('Reporting.affichagePointage') }}" class="btn btn-secondary">Annuler</a>
+             <!--<a href="{{ route('Reporting.affichagePointage') }}" class="btn btn-secondary">Annuler</a>-->
         </form>
     </div>
 

@@ -25,6 +25,10 @@
                                 {{ __('Reporting') }}
                             </x-dropdown-link>
 
+                            <x-dropdown-link :href="route('Delegue.index')">
+                                {{ __('Délégué') }}
+                            </x-dropdown-link>
+
                         </x-slot>
         </x-dropdown>
         </h2>
