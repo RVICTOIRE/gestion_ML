@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight" align="center">
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight" >
             {{ __('Liste des pointages effectués') }}
             
         </h2>
@@ -19,17 +19,18 @@
             <div class="row">
                 <div class="col-md-4">
                     <label for="date_debut" class="form-label">Date de début :</label>
-                    <input type="date" name="date_debut" id="date_debut" class="form-control" value="{{ request('date_debut') }}">
+                    <input type="text" name="date_debut" id="date_debut" class="form-control flatpickr" value="{{ request('date_debut') }}">
                 </div>
                 <div class="col-md-4">
                     <label for="date_fin" class="form-label">Date de fin :</label>
-                    <input type="date" name="date_fin" id="date_fin" class="form-control" value="{{ request('date_fin') }}">
+                    <input type="text" name="date_fin" id="date_fin" class="form-control flatpickr" value="{{ request('date_fin') }}">
                 </div>
                 <div class="col-md-4 d-flex align-items-end">
                     <button type="submit" class="btn btn-success w-100">Rechercher</button>
                 </div>
             </div>
         </form>
+
 
         <!-- Tableau des pointages -->
         <form action="" method="post">

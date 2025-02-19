@@ -20,8 +20,13 @@
                 <thead class="thead-light">
                     <tr>
                         <th scope="col">Concessionnaires</th>
-                        <th scope="col">Nombre de véhicules</th>
-                        <th scope="col">État</th>
+                        <th scope="col">Ninéa</th>
+                        <th scope="col">Date de début</th>
+                        <th scope="col">Date de fin</th>
+                        <th scope="col">Situation</th>
+                        <th scope="col">Nom contact</th>
+                        <th scope="col">Téléphone</th>
+
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -29,8 +34,12 @@
                     @foreach ($concessionaires as $concessionnaire)
                         <tr>
                             <td>{{ $concessionnaire->nomConcess }}</td>
-                            <td>{{ $concessionnaire->NombreVehicule }}</td>
-                            <td>{{ $concessionnaire->Etat }}</td>
+                            <td>{{ $concessionnaire->Ninea }}</td>
+                            <td>{{ $concessionnaire->Date_debut }}</td>
+                            <td>{{ $concessionnaire->Date_fin }}</td>
+                            <td>{{ $concessionnaire->Situation }}</td>
+                            <td>{{ $concessionnaire->Nom_contact }}</td>
+                            <td>{{ $concessionnaire->Num_contact }}</td>
                             <td>
                                 <div class="d-flex gap-2">
                                     <!-- Bouton Modifier -->

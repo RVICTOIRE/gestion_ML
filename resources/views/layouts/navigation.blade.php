@@ -13,11 +13,27 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Tableau de bord') }}
                     </x-nav-link>
                 </div>
 
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('Admin.index')" :active="request()->routeIs('Admin.index')">
+                        {{ __('Administrateur') }}
+                    </x-nav-link>
+                </div>
                 
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('Reporting.index')" :active="request()->routeIs('Reporting.index')">
+                        {{ __('Reporting') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('Delegue.index')" :active="request()->routeIs('Delegue.index')">
+                        {{ __('Délégué') }}
+                    </x-nav-link>
+                </div>
 
             </div>
 

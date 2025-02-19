@@ -20,5 +20,5 @@ class Materiel_lourd extends Model
     protected $primaryKey = 'idML';
     // Spécifier le nom de la table si différent de la convention par défaut
     protected $table = 'materiel_lourd';
-    protected $fillable = ['matricule', 'typeml', 'capacite','idConcess'];
+    protected $fillable = ['matricule', 'typeml', 'capacite','idConcess','Etat'];
 }

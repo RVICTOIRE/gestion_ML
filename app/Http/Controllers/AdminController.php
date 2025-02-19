@@ -31,6 +31,7 @@ class AdminController extends Controller
             'typeml' => 'required|string|max:255',
             'capacite' => 'required|integer|max:255',
             'idConcess' => 'required|exists:concessionaires,idConcess',
+            'Etat' => 'required|string|max:255',
         ]);
         Materiel_lourd::create($validatedData);
         return redirect()->route('Admin.showMLForm')->with('success', 'ML enregistré avec succès');
@@ -65,6 +66,12 @@ public function storeCommuneForm (Request $request) {
 {
     $validatedData = $request->validate([
         'nomConcess' => 'required|string|max:255',
+        'Ninea' => 'string|max:255',
+        'Date_debut' => 'date',
+        'Date_fin' => 'date',
+        'Situation' => 'string|max:255',
+        'Nom_contact' => 'string|max:255',
+        'Num_contact' => 'integer',
         'image' => 'image|max:2000',
     ]);
 
@@ -95,6 +102,12 @@ public function updateConcess(Request $request, Concess $concessionaire)
        
     $validatedData = $request->validate([
         'nomConcess' => 'required|string|max:255',
+        'Ninea' => 'string|max:255',
+        'Date_debut' => 'date',
+        'Date_fin' => 'date',
+        'Situation' => 'string|max:255',
+        'Nom_contact' => 'string|max:255',
+        'Num_contact' => 'integer',
         
     ]);
 
@@ -161,11 +174,24 @@ public function destroyConcess(Concess $concessionaire)
   }
 
   // Affichage Matériel lourd
-  public function showML()
-  {
-    $materiel_lourds = Materiel_lourd::paginate(5);
-      return view('Admin.affichageML', compact('materiel_lourds'));
-  }
+  
+
+    public function showML(Request $request)
+{
+    $query = Materiel_lourd::query();
+
+    // Filtrer par concessionnaire si une valeur est sélectionnée
+    if ($request->has('concessionnaires') && !empty($request->concessionnaire)) {
+        $query->where('idConcess', $request->concessionnaire);
+    }
+
+    $materiel_lourds = $query->paginate(10);
+    $concessionnaires = Concess::all(); // Récupérer tous les concessionnaires
+
+    return view('Admin.affichageML', compact('materiel_lourds', 'concessionnaires'));
+}
+
+    
   
   // Mettre à jour ML avec model binding
   public function updateML(Request $request, Materiel_lourd $materiel_lourd)
@@ -175,6 +201,7 @@ public function destroyConcess(Concess $concessionaire)
         'typeml' => 'required|string|max:255',
         'capacite' => 'required|integer',
         'idConcess' => 'required|exists:concessionaires,idConcess',
+        'Etat' => 'required|string|max:255',
     ]);
 
     // Mise à jour des données
@@ -187,6 +214,7 @@ public function destroyConcess(Concess $concessionaire)
 public function editML(Materiel_lourd $materiel_lourd)
 {
     $concessionaires = Concess::all(); 
+
     return view('Admin.editML', compact('materiel_lourd', 'concessionaires'));
 }
 

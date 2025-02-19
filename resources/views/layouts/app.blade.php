@@ -10,6 +10,11 @@
         <!-- Lien CDN Bootstrap CSS -->
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
+        <!-- Flatpickr CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <!-- Flatpickr JS -->
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -36,5 +41,18 @@
             {{ $slot ?? '' }}
             </main>
         </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                // Initialiser Flatpickr sur tous les champs avec la classe "flatpickr"
+                flatpickr('.flatpickr', {
+                    dateFormat: 'Y-m-d', // Format de date 
+                    locale: 'fr',       // Langue française pour Flatpickr
+
+                    
+
+                });
+            });
+        </script>
+
     </body>
 </html>

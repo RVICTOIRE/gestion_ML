@@ -54,6 +54,11 @@
                                         @endforeach
                                     </select>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="">Etat</label>
+                                    <input type="text" name="Etat" id="" class="form-control">
+                                </div>
                                     
                                 <button type="submit" name="submit" class="btn btn-success">Enregistrer</button>
                                 <!--<button  align="right" type="button" class="btn btn-info"><a href="/Admin">Retour</a></button>-->

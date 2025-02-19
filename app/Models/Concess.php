@@ -15,6 +15,6 @@ class Concess extends Model
     
     protected $primaryKey = 'idConcess';
     protected $table = 'concessionaires'; // Nom de la table
-    protected $fillable = ['nomConcess', 'image'];
+    protected $fillable = ['nomConcess', 'image', 'Ninea', 'Date_debut', 'Date_fin', 'Situation', 'Nom_contact', 'Num_contact'];
 
 }

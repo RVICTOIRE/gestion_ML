@@ -12,16 +12,38 @@
             {{ session('success') }}
         </div>
     @endif
+    <div class="container mt-4">
+    <form method="GET" action="">
+        <div class="row">
+            <div class="col-md-4">
+                <label for="concessionnaire">Filtrer par concessionnaire :</label>
+                <select name="concessionnaire" id="concessionnaire" class="form-control">
+                    <option value="">Tous</option>
+                    @foreach($concessionnaires as $concessionnaire)
+                        <option value="{{ $concessionnaire->id }}" 
+                            {{ request('concessionnaire') == $concessionnaire->id ? 'selected' : '' }}>
+                            {{ $concessionnaire->nomConcess }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary">Filtrer</button>
+            </div>
+        </div>
+    </form>
+</div>
 
     <div class="container mt-4">
         <form action="" method="post">
             <table class="table table-striped table-hover">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col">Matricule</th>
+                        <th scope="col">Numéro de porte</th>
                         <th scope="col">Type de véhicules</th>
                         <th scope="col">Capacité</th>
                         <th scope="col">Concessionnaire</th>
+                        <th scope="col">Etat du matériel lourd</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -32,6 +54,7 @@
             <td>{{ $materiel_lourd->typeml }}</td>
             <td>{{ $materiel_lourd->capacite }}</td>
             <td>{{ $materiel_lourd->Concessionnaire->nomConcess ?? 'Non assigné' }}</td>
+            <td>{{ $materiel_lourd->Etat}}</td>
             <td>
                 <div class="d-flex gap-2">
                     <a href="{{ route('Admin.affichageML.edit', $materiel_lourd->idML) }}" class="btn btn-primary btn-sm">Modifier</a>
